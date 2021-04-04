@@ -1,0 +1,53 @@
+﻿<Page
+    x:Class="TemplateStudio.Views.UsersPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Style="{StaticResource PageStyle}"
+    mc:Ignorable="d">
+    <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
+        <Grid
+            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+            <SplitView PanePlacement="Right"
+                       IsPaneOpen="False"
+                       x:Name="openHelpPanel"
+                       DisplayMode="Inline"
+                       OpenPaneLength="800"
+                       >
+                <SplitView.Pane>
+                    <StackPanel Background="Gray">
+                        <TextBlock Text="Is working" FontSize="40"/>
+                    </StackPanel>
+                </SplitView.Pane>
+                <SplitView.Content>
+                    <Grid>
+                        <Rectangle Visibility="Visible" Width="300" UseLayoutRounding="True" Fill="LightGray">
+                        </Rectangle>
+                        <StackPanel>
+                            <Ellipse Height="250" Width="250"
+                                     Visibility="Visible"
+                                     HorizontalAlignment="Center"
+                                     Margin="0,10,0,0">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/Assets/Default.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center">
+                                <TextBlock Text="First name"/>
+                                <TextBlock Text="Alexey" Margin="30,0,0,0"/>
+                            </StackPanel>
+
+                            <Button Content="{x:Bind ViewModel.ButtonRegistry}"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Click="Button_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </SplitView.Content>
+            </SplitView>
+        </Grid>
+    </Grid>
+</Page>
