@@ -11,7 +11,6 @@ namespace TemplateStudio.Models.ModelInterfaces
     {
         string Header { get; set; }
         string Text { get; set; }
-        Image NewsImage { get; set; }
-        Image CompanyImage { get; set; }
+        string NewsImage { get; set; }
     }
 }

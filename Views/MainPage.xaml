@@ -4,38 +4,54 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:TemplateStudio.Models"
+    xmlns:view="using:TemplateStudio.ViewModels"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
     <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
-        <Grid
-            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-
-            <RelativePanel>
+        <SplitView OpenPaneLength="1920"
+                   IsPaneOpen="False"
+                   PanePlacement="Right"
+                   DisplayMode="Overlay"
+                   x:Name="splitView">
+            <SplitView.Pane>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="newsImage"
+                               Source="{x:Bind ViewModel.PaneImageContent}"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Top">
+                    </Image>
+                    <TextBlock Text="{x:Bind ViewModel.TextContent}"/>
+                </Grid>
+            </SplitView.Pane>
+            <SplitView.Content>
                 <GridView x:Name="newsGrid"
-                    RelativePanel.LeftOf="Companys">
+                          RelativePanel.LeftOf="Companys"
+                          ItemsSource="{x:Bind ViewModel.DataModel}"
+                          Visibility="Visible"
+                          IsItemClickEnabled="True"
+                          SelectionMode="Single"
+                          ItemClick="{x:Bind ViewModel.ItemClick}">
                     <GridView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="data:MainModel">
                             <StackPanel Orientation="Horizontal">
-                                <StackPanel Orientation="Vertical">
-                                    <TextBox FontSize="16" x:Name="headerText"/>
-                                    <TextBox FontSize="12" x:Name="mainText"/>
-                                </StackPanel>
-                                <Image x:Name="newsPhoto"/>
+                                <TextBlock FontSize="16"
+                                             x:Name="headerText"
+                                             Text="{x:Bind Header}"/>
+                                <Image x:Name="newsPhoto"
+                                       Source="{x:Bind NewsImage}"
+                                       Visibility="Visible"
+                                       Width="250" Height="150"/>
                             </StackPanel>
                         </DataTemplate>
                     </GridView.ItemTemplate>
                 </GridView>
-
-                <GridView x:Name="Companys"
-                          RelativePanel.AlignRightWithPanel="True"
-                          MaxWidth="400">
-                    <GridView.ItemTemplate>
-                        <DataTemplate>
-                            <Image x:Name="companyPhoto"/>
-                        </DataTemplate>
-                    </GridView.ItemTemplate>
-                </GridView>
-            </RelativePanel>
-        </Grid>
+            </SplitView.Content>
+        </SplitView>
     </Grid>
 </Page>

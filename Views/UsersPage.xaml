@@ -6,13 +6,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
-    <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
-        <Grid
-            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+    <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}"
+          HorizontalAlignment="Stretch">
+        <Grid>
             <SplitView PanePlacement="Right"
                        IsPaneOpen="False"
                        x:Name="openHelpPanel"
-                       DisplayMode="Inline"
+                       DisplayMode="Overlay"
                        OpenPaneLength="800"
                        >
                 <SplitView.Pane>
@@ -21,14 +21,52 @@
                     </StackPanel>
                 </SplitView.Pane>
                 <SplitView.Content>
-                    <Grid>
-                        <Rectangle Visibility="Visible" Width="300" UseLayoutRounding="True" Fill="LightGray">
+                    <RelativePanel HorizontalAlignment="Stretch">
+                        <Rectangle Visibility="Visible"
+                                   UseLayoutRounding="True"
+                                   Fill="LightGray"
+                                   Height="800"
+                                   Width="1200"
+                                   MaxWidth="1400"
+                                   RadiusX="10" RadiusY="10"
+                                   Margin="170, 100, 60, 100"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
                         </Rectangle>
-                        <StackPanel>
+                        <Rectangle Visibility="Visible"
+                                   UseLayoutRounding="True"
+                                   Fill="White"
+                                   Width="450"
+                                   Height="700"
+                                   RadiusX="10" RadiusY="10"
+                                   Margin="200, 150, 0, 150">
+                        </Rectangle>
+                        <Rectangle Visibility="Visible"
+                                   Fill="White"
+                                   RadiusX="10"
+                                   RadiusY="10"
+                                   Width="660"
+                                   Height="420"
+                                   Margin="680, 150,0,0">
+                        </Rectangle>
+                        <Rectangle Visibility="Visible"
+                                   Fill="White"
+                                   RadiusX="10"
+                                   RadiusY="10"
+                                   Width="660"
+                                   Height="250"
+                                   Margin="680, 600, 0, 0">
+                        </Rectangle>
+                        <Button Content="{x:Bind ViewModel.ButtonRegistry}"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Click="{x:Bind ViewModel.Button_Click}"
+                                Margin="250, 870, 0, 0"/>
+                        <StackPanel HorizontalAlignment="Left">
                             <Ellipse Height="250" Width="250"
                                      Visibility="Visible"
                                      HorizontalAlignment="Center"
-                                     Margin="0,10,0,0">
+                                     Margin="300,190,0,0">
                                 <Ellipse.Fill>
                                     <ImageBrush ImageSource="/Assets/Default.png"/>
                                 </Ellipse.Fill>
@@ -39,13 +77,8 @@
                                 <TextBlock Text="First name"/>
                                 <TextBlock Text="Alexey" Margin="30,0,0,0"/>
                             </StackPanel>
-
-                            <Button Content="{x:Bind ViewModel.ButtonRegistry}"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                Click="Button_Click"/>
                         </StackPanel>
-                    </Grid>
+                    </RelativePanel>
                 </SplitView.Content>
             </SplitView>
         </Grid>

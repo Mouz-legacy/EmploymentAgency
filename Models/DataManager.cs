@@ -1,21 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace TemplateStudio.Models
 {
-    public static class DataManager<T>
+    public static class DataManager
     {
-        public static IList<T> GetMainData()
+        public static List<MainModel> GetMainData()
         {
-            return null;
-        }
-
-        public static IList<T> GetMainData()
-        {
-            return null;
+            return new List<MainModel>
+            {
+                new MainModel
+                {
+                    Header = "MainHeader",
+                    Text = "Here will be text",
+                    NewsImage = "/Assets/Epam.png",
+                },
+                new MainModel
+                {
+                    Header = "MainHeader",
+                    Text = "Here will be text",
+                    NewsImage = "/Assets/Qulix.gif",
+                },
+                new MainModel
+                {
+                    Header = "MainHeader",
+                    Text = "Here will be text",
+                    NewsImage = "/Assets/Epam.png",
+                }, 
+            };
         }
     }
 }

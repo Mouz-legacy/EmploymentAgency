@@ -10,12 +10,11 @@ using Windows.UI.Xaml.Controls;
 
 namespace TemplateStudio.Models
 {
-    internal class MainModel : Observable, IMainModel
+    public class MainModel : Observable, IMainModel
     {
         private string _header;
         private string _text;
-        private Image _newsImage;
-        private Image _companyImage;
+        private string _newsImage;
 
         public string Header
         {
@@ -29,16 +28,10 @@ namespace TemplateStudio.Models
             set { Set(ref _text, value); }
         }
 
-        public Image NewsImage
+        public string NewsImage
         {
             get => _newsImage;
             set { Set(ref _newsImage, value); }
-        }
-
-        public Image CompanyImage
-        {
-            get => _companyImage;
-            set { Set(ref _companyImage, value); }
         }
     }
 }

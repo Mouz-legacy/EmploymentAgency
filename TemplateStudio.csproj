@@ -235,6 +235,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Default.png" />
+    <Content Include="Assets\Epam.png" />
+    <Content Include="Assets\Qulix.gif" />
+    <Content Include="Assets\TechArt.gif" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

@@ -13,12 +13,7 @@ namespace TemplateStudio.Views
         public UsersPage()
         {
             InitializeComponent();
-            ViewModel = new UsersViewModel();
-        }
-
-        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            openHelpPanel.IsPaneOpen = !openHelpPanel.IsPaneOpen;
+            ViewModel = new UsersViewModel(ref this.openHelpPanel);
         }
     }
 }
