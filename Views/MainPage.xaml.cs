@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using TemplateStudio.Models;
-using TemplateStudio.ViewModels;
-
+﻿using TemplateStudio.ViewModels;
 using Windows.UI.Xaml.Controls;
 
 namespace TemplateStudio.Views

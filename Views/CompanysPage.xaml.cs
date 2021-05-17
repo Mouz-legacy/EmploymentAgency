@@ -8,7 +8,7 @@ namespace TemplateStudio.Views
 {
     public sealed partial class CompanysPage : Page
     {
-        public CompanysViewModel ViewModel { get; } = new CompanysViewModel();
+        public CompanyViewModel ViewModel { get; } = new CompanyViewModel();
 
         public CompanysPage()
         {

@@ -17,16 +17,23 @@
             <SplitView.Pane>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="newsImage"
-                               Source="{x:Bind ViewModel.PaneImageContent}"
-                                   HorizontalAlignment="Stretch"
-                                   VerticalAlignment="Top">
-                    </Image>
-                    <TextBlock Text="{x:Bind ViewModel.TextContent}"/>
+                    <StackPanel Grid.Column="1" Grid.ColumnSpan="1" Orientation="Vertical">
+                        <Image x:Name="newsImage"
+                               Source="{x:Bind ViewModel.Model.NewsImage,
+                               UpdateSourceTrigger=PropertyChanged,
+                               Mode=TwoWay}"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Top">
+                        </Image>
+                        <TextBlock Text="{x:Bind ViewModel.Model.Text,
+                                UpdateSourceTrigger=PropertyChanged,
+                                Mode=TwoWay}"
+                                Width="1000"/>
+                    </StackPanel>
                 </Grid>
             </SplitView.Pane>
             <SplitView.Content>
@@ -36,17 +43,26 @@
                           Visibility="Visible"
                           IsItemClickEnabled="True"
                           SelectionMode="Single"
-                          ItemClick="{x:Bind ViewModel.ItemClick}">
+                          ItemClick="{x:Bind ViewModel.ItemClick}"
+                          HorizontalAlignment="Center">
                     <GridView.ItemTemplate>
                         <DataTemplate x:DataType="data:MainModel">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontSize="16"
-                                             x:Name="headerText"
-                                             Text="{x:Bind Header}"/>
                                 <Image x:Name="newsPhoto"
                                        Source="{x:Bind NewsImage}"
                                        Visibility="Visible"
-                                       Width="250" Height="150"/>
+                                       Height="200"
+                                       MinWidth="1920"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Stretch"/>
+                                <TextBlock FontSize="25"
+                                           x:Name="headerText"
+                                           Text="{x:Bind Header}"
+                                           FontWeight="Bold"
+                                           Margin="-1470, 50, 0 ,0"
+                                           FontFamily="Roboto"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Stretch"/>
                             </StackPanel>
                         </DataTemplate>
                     </GridView.ItemTemplate>

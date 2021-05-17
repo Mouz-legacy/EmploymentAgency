@@ -1,7 +1,6 @@
-﻿using System;
-
+﻿using System.Collections.ObjectModel;
+using TemplateStudio.Models.DataModels;
 using TemplateStudio.ViewModels;
-
 using Windows.UI.Xaml.Controls;
 
 namespace TemplateStudio.Views
@@ -13,7 +12,9 @@ namespace TemplateStudio.Views
         public UsersPage()
         {
             InitializeComponent();
-            ViewModel = new UsersViewModel(ref this.openHelpPanel);
+            ViewModel = new UsersViewModel(ref this.HelpPanel,
+                ref this.LoginRegistry,
+                ref this.OffersView);
         }
     }
 }

@@ -24,13 +24,24 @@
         IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
         SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
         IsSettingsVisible="False"
-        Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
-        <winui:NavigationView.MenuItems>
+        
+        >
+        
+        <winui:NavigationView.Resources>
+            <SolidColorBrush x:Key="NavigationViewItemForeground" Color="#FF464646"/>
+            <SolidColorBrush x:Key="NavigationViewItemForegroundPointerOver" Color="White"/>
+            <SolidColorBrush x:Key="NavigationViewItemForegroundPressed" Color="White"/>
+            <SolidColorBrush x:Key="NavigationViewItemForegroundSelectedPointerOver" Color="White"/>
+            <SolidColorBrush x:Key="NavigationViewItemForegroundSelectedPressed" Color="#FF464646"/>
+            <RevealBackgroundBrush x:Key="NavigationViewItemBackground" Color="Red"/>
+        </winui:NavigationView.Resources>
+        
+        <winui:NavigationView.MenuItems >
             <winui:NavigationViewItemHeader Content="Main"/>
 
             <winui:NavigationViewItem x:Uid="Shell_Main"
                                       helpers:NavHelper.NavigateTo="views:MainPage">
-                
+
                 <winui:NavigationViewItem.Icon>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xED1E;"/>
                 </winui:NavigationViewItem.Icon>
@@ -38,14 +49,15 @@
 
             <winui:NavigationViewItem x:Uid="Shell_Salary"
                                       helpers:NavHelper.NavigateTo="views:SalaryPage">
-                
+
                 <winui:NavigationViewItem.Icon>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE16D;"/>
                 </winui:NavigationViewItem.Icon>
             </winui:NavigationViewItem>
 
             <winui:NavigationViewItem x:Uid="Shell_Vacancies"
-                                      helpers:NavHelper.NavigateTo="views:VacanciesPage">
+                                      helpers:NavHelper.NavigateTo="views:VacanciesPage"
+                                      >
                 
                 <winui:NavigationViewItem.Icon>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8A1;"/>
@@ -61,7 +73,7 @@
             </winui:NavigationViewItem>
 
             <winui:NavigationViewItemSeparator/>
-            
+
             <winui:NavigationViewItemHeader Content="Account"/>
             <winui:NavigationViewItem x:Uid="Shell_Users"
                                       helpers:NavHelper.NavigateTo="views:UsersPage">
@@ -72,7 +84,7 @@
             </winui:NavigationViewItem>
 
             <winui:NavigationViewItemSeparator/>
-          
+
         </winui:NavigationView.MenuItems>
         <i:Interaction.Behaviors>
             <behaviors:NavigationViewHeaderBehavior>
@@ -92,8 +104,13 @@
             </ic:EventTriggerBehavior>
         </i:Interaction.Behaviors>
         <Grid>
-            <Frame x:Name="shellFrame" HorizontalAlignment="Stretch">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Welcome" FontSize="100"/>
+            <Frame x:Name="shellFrame"
+                   HorizontalAlignment="Stretch"
+                   Margin="-24, 0, -24, 0">
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Text="Welcome"
+                           FontSize="100"/>
             </Frame>
         </Grid>
     </winui:NavigationView>

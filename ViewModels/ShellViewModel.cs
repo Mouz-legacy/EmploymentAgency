@@ -10,9 +10,11 @@ using TemplateStudio.Services;
 using Windows.System;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 using WinUI = Microsoft.UI.Xaml.Controls;
+using Windows.UI;
 
 namespace TemplateStudio.ViewModels
 {

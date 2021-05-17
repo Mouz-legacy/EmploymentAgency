@@ -1,86 +1,558 @@
 ﻿<Page
-    x:Class="TemplateStudio.Views.UsersPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:TemplateStudio.ViewModels"
+    xmlns:Custom="using:Microsoft.UI.Xaml.Controls"
+    d:DataContext="{d:DesignInstance Type=viewmodels:UsersViewModel}"
+    x:Class="TemplateStudio.Views.UsersPage"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
-    <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}"
-          HorizontalAlignment="Stretch">
-        <Grid>
-            <SplitView PanePlacement="Right"
-                       IsPaneOpen="False"
-                       x:Name="openHelpPanel"
-                       DisplayMode="Overlay"
-                       OpenPaneLength="800"
-                       >
-                <SplitView.Pane>
-                    <StackPanel Background="Gray">
-                        <TextBlock Text="Is working" FontSize="40"/>
-                    </StackPanel>
-                </SplitView.Pane>
-                <SplitView.Content>
-                    <RelativePanel HorizontalAlignment="Stretch">
-                        <Rectangle Visibility="Visible"
-                                   UseLayoutRounding="True"
-                                   Fill="LightGray"
-                                   Height="800"
-                                   Width="1200"
-                                   MaxWidth="1400"
-                                   RadiusX="10" RadiusY="10"
-                                   Margin="170, 100, 60, 100"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center">
-                        </Rectangle>
-                        <Rectangle Visibility="Visible"
-                                   UseLayoutRounding="True"
-                                   Fill="White"
-                                   Width="450"
-                                   Height="700"
-                                   RadiusX="10" RadiusY="10"
-                                   Margin="200, 150, 0, 150">
-                        </Rectangle>
-                        <Rectangle Visibility="Visible"
-                                   Fill="White"
-                                   RadiusX="10"
-                                   RadiusY="10"
-                                   Width="660"
-                                   Height="420"
-                                   Margin="680, 150,0,0">
-                        </Rectangle>
-                        <Rectangle Visibility="Visible"
-                                   Fill="White"
-                                   RadiusX="10"
-                                   RadiusY="10"
-                                   Width="660"
-                                   Height="250"
-                                   Margin="680, 600, 0, 0">
-                        </Rectangle>
-                        <Button Content="{x:Bind ViewModel.ButtonRegistry}"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                Click="{x:Bind ViewModel.Button_Click}"
-                                Margin="250, 870, 0, 0"/>
-                        <StackPanel HorizontalAlignment="Left">
-                            <Ellipse Height="250" Width="250"
-                                     Visibility="Visible"
-                                     HorizontalAlignment="Center"
-                                     Margin="300,190,0,0">
-                                <Ellipse.Fill>
-                                    <ImageBrush ImageSource="/Assets/Default.png"/>
-                                </Ellipse.Fill>
-                            </Ellipse>
 
-                            <StackPanel Orientation="Horizontal"
-                                        HorizontalAlignment="Center">
-                                <TextBlock Text="First name"/>
-                                <TextBlock Text="Alexey" Margin="30,0,0,0"/>
-                            </StackPanel>
+    <SplitView IsPaneOpen="True"
+               OpenPaneLength="1920"
+               PanePlacement="Right"
+               Background="White"
+               x:Name="HelpPanel">
+        <SplitView.Pane>
+            <Grid>
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Assets/2.jpg"/>
+                </Grid.Background>
+                <SplitView IsPaneOpen="False"
+                           PanePlacement="Right"
+                           OpenPaneLength="1920"
+                           x:Name="LoginRegistry">
+                    <SplitView.Background>
+                        <ImageBrush ImageSource="/Assets/2.jpg"/>
+                    </SplitView.Background>
+                    <SplitView.Pane>
+                        <Grid>
+                            <Grid.Background>
+                                <ImageBrush ImageSource="/Assets/2.jpg"/>
+                            </Grid.Background>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Member sign up"
+                                           Margin="0,100,0,0"
+                                           FontSize="60"
+                                           FontFamily="Malgun Gothic"
+                                           Visibility="Visible"
+                                           Foreground="White"
+                                           Grid.Column="1"
+                                           HorizontalAlignment="Center"/>
+                            <TextBlock Text="First Name"
+                                       Foreground="White"
+                                       Grid.Column="1"
+                                       Margin="110, 200, 0, 0"/>
+                            <TextBox Grid.Column="1"
+                                         Width="295"
+                                         Height="35"
+                                         Margin="-190,225,121,0"
+                                         VerticalAlignment="Top"
+                                         Text="{x:Bind Mode=TwoWay, Path=ViewModel.User.User.FirstName}"
+                                         />
+                            <TextBlock Text="Last name"
+                                       Foreground="White"
+                                       Grid.Column="1"
+                                       Margin="415, 200, 0, 0"/>
+                            <TextBox Grid.Column="1"
+                                         Width="300"
+                                         Height="35"
+                                         Margin="412,225,121,0"
+                                         VerticalAlignment="Top"
+                                         Text="{x:Bind Mode=TwoWay, Path=ViewModel.User.User.LastName}"/>
+                            <TextBlock Text="Position"
+                                       Foreground="White"
+                                       Grid.Column="1"
+                                       Margin="110, 265, 0, 0"/>
+                            <TextBox Grid.Column="1"
+                                         Width="295"
+                                         Height="35"
+                                         Margin="-190,285,121,0"
+                                         VerticalAlignment="Top"
+                                         Text="{x:Bind Mode=TwoWay, Path=ViewModel.User.User.CurrentPosition}"/>
+                            <TextBlock Text="Description"
+                                       Foreground="White"
+                                       Grid.Column="1"
+                                       Margin="415, 265, 0, 0"/>
+                            <TextBox Grid.Column="1"
+                                         Width="300"
+                                         Height="35"
+                                         Margin="412,285,121,0"
+                                         VerticalAlignment="Top"
+                                         Text="{x:Bind Mode=TwoWay, Path=ViewModel.User.User.PositionDescription}"/>
+                            <TextBlock Text="GitLab"
+                                       Grid.Column="1"
+                                       Foreground="White"
+                                       Margin="112, 335, 0, 0"/>
+                            <TextBox Grid.Column="1"
+                                         Width="160"
+                                         Height="35"
+                                         Margin="-320,355,121,0"
+                                         VerticalAlignment="Top"
+                                         Text="{x:Bind Mode=TwoWay, Path=ViewModel.User.User.GitLabLink}"/>
+                            <TextBlock Text="GitHub"
+                                       Grid.Column="1"
+                                       Foreground="White"
+                                       Margin="112, 405, 0, 0"/>
+                            <TextBox Grid.Column="1"
+                                         Width="160"
+                                         Height="35"
+                                         Margin="-320,425,121,0"
+                                         VerticalAlignment="Top"
+                                         Text="{x:Bind Mode=TwoWay, Path=ViewModel.User.User.GitHubLink}"/>
+                            <TextBlock Text="LinkedIn"
+                                       Grid.Column="1"
+                                       Foreground="White"
+                                       Margin="112, 475, 0, 0"/>
+                            <TextBox Grid.Column="1"
+                                         Width="160"
+                                         Height="35"
+                                         Margin="-320,495,121,0"
+                                         VerticalAlignment="Top"
+                                         Text="{x:Bind Mode=TwoWay, Path=ViewModel.User.User.LinkedinLink}"/>
+                            <TextBox Grid.Column="1"
+                                         Width="400"
+                                         Height="70"
+                                         Margin="300, 355,121,0"
+                                         VerticalAlignment="Top"
+                                         Text="{x:Bind Mode=TwoWay, Path=ViewModel.User.User.Biography}"/>
+                            <TextBox Grid.Column="1"
+                                         Width="400"
+                                         Height="70"
+                                         Margin="300, 460,121,0"
+                                         VerticalAlignment="Top"
+                                         Text="{x:Bind Mode=TwoWay, Path=ViewModel.User.User.StackOfTechnologies}"/>
+                            <TextBlock Text="Stack of technologies"
+                                       Grid.Column="1"
+                                       Foreground="White"
+                                       Margin="305, 440, 0, 0"/>
+                            <TextBlock Text="A little bit about yourslef"
+                                       Grid.Column="1"
+                                       Foreground="White"
+                                       Margin="305, 335, 0, 0"/>
+                            <TextBox Height="35"
+                                         Width="300"
+                                         Grid.Column="1"
+                                         Margin="-305, 570, 0, 0"
+                                         VerticalAlignment="Top"
+                                         Text="{x:Bind Mode=TwoWay, Path=ViewModel.User.User.MobilePhoneNumber}"/>
+                            <TextBox Height="35"
+                                         Width="280"
+                                         Grid.Column="1"
+                                         Margin="300, 570, 0, 0"
+                                         VerticalAlignment="Top"
+                                         Text="{x:Bind Mode=TwoWay, Path=ViewModel.User.User.HomePhoneNumber}"/>
+                            <TextBox Height="35"
+                                         Width="300"
+                                         Grid.Column="1"
+                                         Margin="-305, 630, 0, 0"
+                                         VerticalAlignment="Top"
+                                         Text="{x:Bind Mode=TwoWay, Path=ViewModel.User.User.Email}"/>
+                            <TextBox Height="35"
+                                         Width="300"
+                                         Grid.Column="1"
+                                         Margin="-305, 690, 0, 0"
+                                         VerticalAlignment="Top"
+                                         Text="{x:Bind Mode=TwoWay, Path=ViewModel.User.User.SoftSkillSecond}"/>
+                            <TextBox Height="35"
+                                         Width="300"
+                                         Grid.Column="1"
+                                         Margin="-305, 750, 0, 0"
+                                         VerticalAlignment="Top"
+                                         Text="{x:Bind Mode=TwoWay, Path=ViewModel.User.User.SoftSkillFourth}"/>
+                            <TextBox Height="35"
+                                         Width="280"
+                                         Grid.Column="1"
+                                         Margin="300, 630, 0, 0"
+                                         VerticalAlignment="Top"
+                                         Text="{x:Bind Mode=TwoWay, Path=ViewModel.User.User.SoftSkillFirst}"/>
+                            <TextBox Height="35"
+                                         Width="280"
+                                         Grid.Column="1"
+                                         Margin="300, 690, 0, 0"
+                                         VerticalAlignment="Top"
+                                         Text="{x:Bind Mode=TwoWay, Path=ViewModel.User.User.SoftSkillThird}"/>
+                            <TextBox Height="35"
+                                         Width="280"
+                                         Grid.Column="1"
+                                         Margin="300, 750, 0, 0"
+                                         VerticalAlignment="Top"
+                                         Text="{x:Bind Mode=TwoWay, Path=ViewModel.User.User.SoftSkillFifth}"/>
+                            <TextBox Height="35"
+                                         Width="280"
+                                         Grid.Column="1"
+                                         Margin="300, 810, 0, 0"
+                                         VerticalAlignment="Top"
+                                         Text="{x:Bind Mode=TwoWay, Path=ViewModel.Password}"/>
+                            <TextBox Height="35"
+                                         Width="300"
+                                         Grid.Column="1"
+                                         Margin="-305, 810, 0, 0"
+                                         VerticalAlignment="Top"
+                                         Text="{x:Bind Mode=TwoWay, Path=ViewModel.User.User.Password}"/>
+                            <TextBlock Grid.Column="1"
+                                       Text="Mobile phone number"
+                                       Foreground="White"
+                                       Margin="-396, 115, 0, 0"
+                                       Width="200"
+                                       Height="20"/>
+                            <TextBlock Grid.Column="1"
+                                       Text="Home phone number"
+                                       Foreground="White"
+                                       Margin="229, 115, 0, 0"
+                                       Width="200"
+                                       Height="20"/>
+                            <TextBlock Grid.Column="1"
+                                       Text="First skill"
+                                       Foreground="White"
+                                       Margin="229, 235, 0, 0"
+                                       Width="200"
+                                       Height="20"/>
+                            <TextBlock Grid.Column="1"
+                                       Text="Second skill"
+                                       Foreground="White"
+                                       Margin="229, 355, 0, 0"
+                                       Width="200"
+                                       Height="20"/>
+                            <TextBlock Grid.Column="1"
+                                       Text="Fifth skill"
+                                       Foreground="White"
+                                       Margin="229, 475, 0, 0"
+                                       Width="200"
+                                       Height="20"/>
+                            <TextBlock Grid.Column="1"
+                                       Text="Reenter password"
+                                       Foreground="White"
+                                       Margin="229, 595, 0, 0"
+                                       Width="200"
+                                       Height="20"/>
+                            <TextBlock Grid.Column="1"
+                                       Text="Email"
+                                       Foreground="White"
+                                       Margin="-396, 235, 0, 0"
+                                       Width="200"
+                                       Height="20"/>
+                            <TextBlock Grid.Column="1"
+                                       Text="Second skill"
+                                       Foreground="White"
+                                       Margin="-396, 355, 0, 0"
+                                       Width="200"
+                                       Height="20"/>
+                            <TextBlock Grid.Column="1"
+                                       Text="Fourth skill"
+                                       Foreground="White"
+                                       Margin="-396, 475, 0, 0"
+                                       Width="200"
+                                       Height="20"/>
+                            <TextBlock Grid.Column="1"
+                                       Text="Password"
+                                       Foreground="White"
+                                       Margin="-396, 595, 0, 0"
+                                       Width="200"
+                                       Height="20"/>
+                            <Button Grid.Row="1" Grid.Column="1"
+                                    Width="200"
+                                    Height="40"
+                                    Margin="320, 750, 0, 0"
+                                    Content="Complete"
+                                    Foreground="White"
+                                    Click="{x:Bind Path=ViewModel.Validate_Regisrty}"/>
+                            <Button Grid.Row="1" Grid.Column="1"
+                                    Width="200"
+                                    Height="40"
+                                    Margin="320, 850, 0, 0"
+                                    Content="Back"
+                                    Foreground="White"
+                                    Click="{x:Bind Path=ViewModel.Login_OpenClose}"/>
+                        </Grid>
+                    </SplitView.Pane>
+                    <Grid>
+                        <Grid.Background>
+                            <ImageBrush ImageSource="/Assets/2.jpg"/>
+                        </Grid.Background>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Bureau Login"
+                           FontSize="60"
+                           FontFamily="Malgun Gothic"
+                           Visibility="Visible"
+                           Foreground="White"
+                           Grid.Column="1"
+                           HorizontalAlignment="Center"
+                           Margin="0, 100, 0, 0"/>
+                        <TextBlock Text="Enter your passwrod"
+                           Grid.Column="1"
+                           Foreground="White"
+                           Width="300"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+                        <PasswordBox Grid.Column="1"
+                             Height="32"
+                             Width="300"
+                             VerticalAlignment="Center"
+                             Margin="257,60,266,0"
+                             
+                             />
+                        <TextBlock Text="Enter your login"
+                           Grid.Column="1"
+                           Foreground="White"
+                           Width="300"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="0, -150, 0, 0"/>
+                        <TextBox Grid.Column="1"
+                             Height="30"
+                             Width="300"
+                             VerticalAlignment="Center"
+                             Margin="-10, -90, 0, 0"
+                             />
+                        <Button Grid.Column="1"
+                        Width="300"
+                        Height="40"
+                        HorizontalAlignment="Center"
+                        Margin="0, 200, 0, 0"
+                        Foreground="White"
+                        FontSize="15"
+                        Content="Log in"
+                        Click="{x:Bind Path=ViewModel.Button_Click}"/>
+                        <Button Grid.Column="1"
+                        Width="300"
+                        Height="40"
+                        HorizontalAlignment="Center"
+                        Margin="0, 300, 0, 0"
+                        Foreground="White"
+                        FontSize="15"
+                        Content="Registry"
+                        Click="{x:Bind Path=ViewModel.Login_OpenClose}"/>
+                    </Grid>
+                </SplitView>
+            </Grid>
+        </SplitView.Pane>
+        <Grid Background="White" Visibility="Visible">
+            <SplitView PanePlacement="Right"
+                           OpenPaneLength="700"
+                           Margin="0, 100, 0, 100"
+                           x:Name="OffersView">
+                <SplitView.Pane>
+                    <Grid Height="810"
+                          Margin="0, 0, 0, 0"
+                          Background="White">
+                        <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Top"
+                                   Height="38"
+                                   Margin="0, 30, 0, 0"
+                                   FontSize="40"
+                                   FontWeight="SemiBold"
+                                   Text="Credit Details"
+                                   FontFamily="Roboto"/>
+                        <Button HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                Margin="0, 100, 0, 0"
+                                Height="40"
+                                Width="500"
+                                Background="DodgerBlue"
+                                Content="{x:Bind ViewModel.SelectedVacancies.Position}"
+                                FontSize="20"
+                                FontWeight="SemiBold"
+                                FontFamily="Roboto"/>
+                        <Button VerticalAlignment="Top"
+                                Height="30"
+                                Width="80"
+                                Margin="20, 700 ,0 ,0"
+                                Background="DodgerBlue"
+                                Content="Back"
+                                Click="{x:Bind ViewModel.CloseOffer_Click}"/>
+                        <TextBlock HorizontalAlignment="Center"
+                                   Height="100"
+                                   Margin="-300, -390, 0, 0"
+                                   Text="{x:Bind ViewModel.SelectedVacancies.Description}"/>
+                    </Grid>
+                </SplitView.Pane>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Line X1="0" X2="1920" Y1="0" Y2="0"
+                                  StrokeThickness="0.5"
+                                  Visibility="Visible"
+                                  Stroke="Black"
+                                  Grid.ColumnSpan="3"/>
+                    <Line X1="0" X2="1920" Y1="800" Y2="800"
+                                  StrokeThickness="0.5"
+                                  Visibility="Visible"
+                                  Stroke="Black"
+                                  Grid.ColumnSpan="3"/>
+                    <Line X1="520" X2="520" Y1="0" Y2="800"
+                                  StrokeThickness="0.5"
+                                  Visibility="Visible"
+                                  Stroke="Black"/>
+                    <Line X1="695" X2="695" Y1="0" Y2="800"
+                                  StrokeThickness="0.5"
+                                  Visibility="Visible"
+                                  Stroke="Black"
+                                  Grid.Column="1"/>
+                    <Line Grid.Column="0"
+                          X1="50" X2="470"
+                          Y1="400" Y2="400"
+                          Stroke="Black"/>
+                    <StackPanel
+                                        Orientation="Vertical"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top">
+                        <PersonPicture Margin="0, 50, 0, 0"
+                                           Width="150"
+                                           Height="150"
+                                           ProfilePicture="{x:Bind Path=ViewModel.User.User.ImageSource}"
+                                           />
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <TextBlock Text="{x:Bind Path=ViewModel.User.User.FirstName}"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Top"
+                                               Margin="0, 20, 10, 0"
+                                               FontStyle="Normal"
+                                               FontFamily="Roboto"
+                                               FontSize="20"/>
+                            <TextBlock
+                                        Margin="0, 20, 0, 0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top"
+                                        Text="{x:Bind Path=ViewModel.User.User.LastName}"
+                                        FontStyle="Normal"
+                                        FontFamily="Roboto"
+                                        FontSize="20"/>
                         </StackPanel>
-                    </RelativePanel>
-                </SplitView.Content>
+                            <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    Text="{x:Bind Path=ViewModel.User.User.Email}"
+                                    FontStyle="Normal"
+                                    FontFamily="Roboto"
+                                    FontSize="20"
+                                    Margin="0, 10, 0, 0"
+                                    />
+                        <TextBlock
+                            
+                            Text="{x:Bind ViewModel.User.User.CurrentPosition}"
+                            FontFamily="Roboto"
+                            FontSize="20"
+                            FontStyle="Normal"
+                            HorizontalAlignment="Center"
+                            Margin="0, 10, 0, 0"
+                            />
+                    </StackPanel>
+                    <StackPanel
+                        Orientation="Horizontal"
+                        Grid.Column="0"
+                        HorizontalAlignment="Center"
+                        Margin="0, -120, 0, 0">
+                        <Button Width="90" Height="35"
+                                Content="GitHub"
+                                Background="DodgerBlue"
+                                Margin="10"/>
+                        <Button Width="90" Height="35"
+                                Content="GitLab"
+                                Background="DodgerBlue"
+                                Margin="10"/>
+                        <Button Width="90" Height="35"
+                                Content="LinkedIn"
+                                Background="DodgerBlue"
+                                Margin="10"/>
+                    </StackPanel>
+                    <TextBlock
+                        Grid.Column="0"
+                        HorizontalAlignment="Center"
+                        Text="Soft skills"
+                        FontFamily="Roboto"
+                        FontSize="27"
+                        FontWeight="SemiBold"
+                        Margin="0, 60, 0, 0"
+                        VerticalAlignment="Center"/>
+                    <StackPanel Grid.Column="0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Margin="-100, 260, 0, 0">
+                        <TextBlock
+                            FontFamily="Roboto"
+                            FontSize="20"
+                            Text="{x:Bind ViewModel.User.User.SoftSkillFirst}"
+                            Margin="0, 35, 0, 0"/>
+                        <TextBlock
+                            FontFamily="Roboto"
+                            FontSize="20"
+                            Text="{x:Bind ViewModel.User.User.SoftSkillSecond}"
+                            Margin="0, 15, 0, 0"/>
+                        <TextBlock
+                            FontFamily="Roboto"
+                            FontSize="20"
+                            Text="{x:Bind ViewModel.User.User.SoftSkillThird}"
+                            Margin="0, 15, 0, 0"/>
+                        <TextBlock
+                            FontFamily="Roboto"
+                            FontSize="20"
+                            Text="{x:Bind ViewModel.User.User.SoftSkillFourth}"
+                            Margin="0, 15, 0, 0"/>
+                        <TextBlock
+                            FontFamily="Roboto"
+                            FontSize="20"
+                            Text="{x:Bind ViewModel.User.User.SoftSkillFifth}"
+                            Margin="0, 15, 0, 0"/>
+                    </StackPanel>
+                        <TextBlock Grid.Column="1"
+                                   Text="Avaliables offers"
+                                   FontFamily="Roboto"
+                                   FontSize="38"
+                                   FontWeight="SemiBold"
+                                   HorizontalAlignment="Center"
+                                   Margin="0, 40, 0, 0"/>
+                    <ListView SelectionMode="Single"
+                                      Margin="0, 60, 0, 0"
+                                      Grid.Column="1"
+                                      ItemsSource="{x:Bind ViewModel.Vacancies}"
+                                      ItemClick="{x:Bind ViewModel.CompanyList_ItemClick}"
+                                      IsItemClickEnabled="True"
+                                      Width="685"
+                                      Height="690">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0, 5, 0, 0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <PersonPicture
+                                            ProfilePicture="{Binding CompanyImageSource}"/>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock
+                                                Text="{Binding Position}"
+                                                Margin="20, 20, 0, 0"
+                                                FontSize="25"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Button
+                        Content="Exit"
+                        Grid.Column="2"
+                        VerticalAlignment="Top"
+                        Margin="560, -70, 0, 0"
+                        Height="35"
+                        Width="90"
+                        Click="{x:Bind ViewModel.Button_Click}"/>
+
+                </Grid>
             </SplitView>
         </Grid>
-    </Grid>
+    </SplitView>
 </Page>

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace TemplateStudio.Models
 {
-    class CompanysModel
+    public  class CompanyModel
     {
+        public string Name { get; set; }
+
     }
 }
