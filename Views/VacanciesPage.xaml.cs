@@ -8,11 +8,12 @@ namespace TemplateStudio.Views
 {
     public sealed partial class VacanciesPage : Page
     {
-        public VacanciesViewModel ViewModel { get; } = new VacanciesViewModel();
+        public VacanciesViewModel ViewModel { get; }
 
         public VacanciesPage()
         {
             InitializeComponent();
+            ViewModel = new VacanciesViewModel(ref splitView);
         }
     }
 }

@@ -7,75 +7,378 @@
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
     <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
-        <Border CornerRadius="10" Margin="100, 50, 100, 0">
+        <SplitView
+            Name="splitView"
+            PanePlacement="Right"
+            OpenPaneLength="850"
+            Margin="0, 50, 0, 0">
+            <SplitView.Pane>
+                <Grid Margin="0, 0, 0, 0">
+                    <StackPanel Orientation="Vertical"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top">
+                        <TextBlock Text="{x:Bind ViewModel.SelectedVacancies.Vacancies.Company,
+                            UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                   FontFamily="Roboto"
+                                   FontSize="40"
+                                   FontWeight="SemiBold"
+                                   Margin="30, 30, 0, 0"/>
+                        <TextBlock Margin="20, 20, 20, 20"
+                                   Text="{x:Bind ViewModel.SelectedVacancies.Vacancies.Description,
+                                   Mode=TwoWay}"
+                                   TextWrapping="Wrap"
+                                   FontFamily="Roboto"
+                                   FontSize="25"
+                                   TextAlignment="Left"
+                                   HorizontalAlignment="Center"/>
 
-            <Grid
-            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition Width="3*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock
+                    </StackPanel>
+                </Grid>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+                <Border CornerRadius="10" Margin="100, 0, 100, 0">
+                    <Grid
+                        Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
                     Grid.Column="0"
                     Text="Specialisations"
                     FontFamily="Roboto"
                     FontSize="40"
                     FontWeight="SemiBold"
                     Margin="30, 30 ,0 ,0"/>
-                <Button Content="DBA"
-                        Margin="30,120,0,0"
+                        <Button Content="DBA"
+                        Margin="30,100,0,0"
                         VerticalAlignment="Top"
                         Width="120"
                         Height="40"
                         FontFamily="Roboto"
                         FontWeight="Bold"
                         Background="DodgerBlue"/>
-                <Button Content="Support"
-                        Margin="170,120,0,0"
+                        <Button Content="Support"
+                        Margin="170,100,0,0"
                         VerticalAlignment="Top"
                         Width="120"
                         Height="40"
                         FontFamily="Roboto"
                         FontWeight="Bold"
                         Background="DodgerBlue"/>
-                <Button Content="Techincal Writer"
-                        Margin="310,120,0,0"
+                        <Button Content="Techincal Writer"
+                        Margin="310,100,0,0"
                         VerticalAlignment="Top"
                         Width="120"
                         Height="40"
                         FontFamily="Roboto"
                         FontWeight="Bold"
                         Background="DodgerBlue"/>
-                <Button Content="Architect"
-                        Margin="30,180,0,0"
+                        <Button Content="Architect"
+                        Margin="30,160,0,0"
                         VerticalAlignment="Top"
                         Width="120"
                         Height="40"
                         FontFamily="Roboto"
                         FontWeight="Bold"
                         Background="DodgerBlue"/>
-                <Button Content="C-level"
-                        Margin="170,180,0,0"
+                        <Button Content="C-level"
+                        Margin="170,160,0,0"
                         VerticalAlignment="Top"
                         Width="120"
                         Height="40"
                         FontFamily="Roboto"
                         FontWeight="Bold"
                         Background="DodgerBlue"/>
-                <Button Content="Other"
-                        Margin="310,180,0,0"
+                        <Button Content="Other"
+                        Margin="310,160,0,0"
                         VerticalAlignment="Top"
                         Width="120"
                         Height="40"
                         FontFamily="Roboto"
                         FontWeight="Bold"
                         Background="DodgerBlue"/>
+                        <Button Content="Java"
+                        Margin="30,220,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="Node.js"
+                        Margin="170,220,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="Python"
+                        Margin="310,220,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="Marketing/PR"
+                        Margin="30,280,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="QA Automation"
+                        Margin="170,280,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="C/C++"
+                        Margin="310,280,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="GameDev"
+                        Margin="30,340,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="PHP"
+                        Margin="170,340,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="Ruby/Rails"
+                        Margin="310,340,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="UX/Design"
+                Margin="30,400,0,0"
+                VerticalAlignment="Top"
+                Width="120"
+                Height="40"
+                FontFamily="Roboto"
+                FontWeight="Bold"
+                Background="DodgerBlue"/>
+                        <Button Content="Data Science"
+                        Margin="170,400,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="Scala"
+                        Margin="310,400,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="Project Manager"
+                        Margin="30,460,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="Recruiting/HR"
+                        Margin="170,460,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="SalesForce"
+                        Margin="310,460,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content=".NET/C#"
+                        Margin="30,520,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="Business Analysis"
+                        Margin="170,520,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="Golang"
+                        Margin="310,520,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="IOS"
+                        Margin="30,580,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="Android"
+                        Margin="170,580,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="DevOps"
+                        Margin="310,580,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="Team/Tech Lead"
+                        Margin="30,640,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="Front-end/JS"
+                        Margin="170,640,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button Content="Product Manager"
+                        Margin="310,640,0,0"
+                        VerticalAlignment="Top"
+                        Width="120"
+                        Height="40"
+                        FontFamily="Roboto"
+                        FontWeight="Bold"
+                        Background="DodgerBlue"/>
+                        <Button
+                    Content="Intern"
+                    Margin="30, 750, 0, 0"
+                    Width="400"
+                    Height="40"
+                    VerticalAlignment="Top"
+                    Background="DodgerBlue"
+                    FontWeight="Bold"/>
+                        <Button
+                    Content="Junior"
+                    Margin="30, 800, 0, 0"
+                    Width="400"
+                    Height="40"
+                    VerticalAlignment="Top"
+                    Background="DodgerBlue"
+                    FontWeight="Bold"/>
+                        <Button
+                    Content="Middle"
+                    Margin="30, 850, 0, 0"
+                    Width="400"
+                    Height="40"
+                    VerticalAlignment="Top"
+                    Background="DodgerBlue"
+                    FontWeight="Bold"/>
+                        <Button
+                    Content="Senior"
+                    Margin="30, 900, 0, 0"
+                    Width="400"
+                    Height="40"
+                    VerticalAlignment="Top"
+                    Background="DodgerBlue"
+                    FontWeight="Bold"/>
+                        <TextBlock
+                    Margin="30, 690, 0, 0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Text="Level"
+                    FontFamily="Roboto"
+                    FontSize="40"
+                    FontWeight="SemiBold"/>
+                        <TextBlock
+                    Grid.Column="1"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    FontFamily="Roboto"
+                    FontSize="40"
+                    FontWeight="SemiBold"
+                    Text="Vacancies"
+                    Margin="30, 30, 0, 0"/>
+                        <GridView
+                        Grid.Column="1"
+                        Width="760"
+                        Margin="0, 100, 0, 0"
+                        IsItemClickEnabled="True"
+                        SelectionMode="Single"
+                        ItemsSource="{x:Bind ViewModel.Vacancies}"
+                        ItemClick="{x:Bind ViewModel.Vacancies_ItemClick, Mode=OneWay}">
 
-                <GridView Grid.Column="1">
+                            <GridView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <StackPanel Orientation="Horizontal"
+                                                    Width="500"
+                                                    Height="75"
+                                                    Margin="20, 0, 0, 0">
+                                            <PersonPicture ProfilePicture="{Binding Vacancies.CompanyImageSource}"
+                                                           Width="75"
+                                                           Height="75"/>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="{Binding Vacancies.Company}"
+                                                           Margin="10, 5, 0, 0"
+                                                           FontFamily="Roboto"
+                                                           FontSize="18"/>
+                                                <TextBlock Text="{Binding Vacancies.Position}"
+                                                           Margin="10, 0, 0, 0"
+                                                           FontFamily="Roboto"
+                                                           FontSize="18"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
+                    </Grid>
+                </Border>
+            </SplitView.Content>
 
-                </GridView>
-            </Grid>
-        </Border>
+        </SplitView>
     </Grid>
 </Page>

@@ -47,17 +47,9 @@
                 </winui:NavigationViewItem.Icon>
             </winui:NavigationViewItem>
 
-            <winui:NavigationViewItem x:Uid="Shell_Salary"
-                                      helpers:NavHelper.NavigateTo="views:SalaryPage">
-
-                <winui:NavigationViewItem.Icon>
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE16D;"/>
-                </winui:NavigationViewItem.Icon>
-            </winui:NavigationViewItem>
-
             <winui:NavigationViewItem x:Uid="Shell_Vacancies"
                                       helpers:NavHelper.NavigateTo="views:VacanciesPage"
-                                      >
+            >
                 
                 <winui:NavigationViewItem.Icon>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8A1;"/>

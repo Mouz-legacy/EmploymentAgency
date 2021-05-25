@@ -4,16 +4,20 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
     <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
-        <Grid
-            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <!--
-                The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content.
-                Place your content here.
-            -->
-
+        <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+            <Charting:Chart
+                x:Name="ColumnChart"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <Charting:ColumnSeries Title="SmartPhone popular"
+                                       IndependentValuePath="Name"
+                                       DependentValuePath="Amount"
+                                       IsSelectionEnabled="True"/>
+            </Charting:Chart>
         </Grid>
     </Grid>
 </Page>

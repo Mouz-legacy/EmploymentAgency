@@ -3,13 +3,19 @@ using TemplateStudio.Models.DataModels;
 
 namespace TemplateStudio.Models
 {
+    [Serializable]
     public class UsersModel
     {
-        public User User { get; }
+        public User User { get; private set; }
 
         public UsersModel()
         {
             this.User = new User();
+        }
+
+        public void SetUser(User user)
+        {
+            this.User = user;
         }
 
         public UsersModel SetName(string name)

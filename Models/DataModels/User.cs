@@ -4,6 +4,7 @@ using TemplateStudio.Validation;
 
 namespace TemplateStudio.Models.DataModels
 {
+    [Serializable]
     public class User
     {
         [FirstNameValidation]
